@@ -12,14 +12,15 @@ class PyObjectId(ObjectId):
     def validate(cls, v):
         if not isinstance(v, ObjectId):
             raise TypeError('ObjectId required')
-        return str(v)
+        return ObjectId(v)
     
     @classmethod
     def __modify_schema__(cls, field_schema):
         field_schema.update(type="string")
 
 class Cake(BaseModel):
-    id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    # id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    id: int = Field(..., title="Id of the cake")
     name: str = Field(..., title="Name of the cake", max_length=30)
     comment: str = Field(..., title="Description of the cake", max_length=200)
     imageUrl: str = Field(..., title="Url for the image")
@@ -28,3 +29,5 @@ class Cake(BaseModel):
     class Config:
         allow_population_by_field_name = False
         arbitrary_types_allowed = True 
+        json_encoders = {ObjectId: str}
+        orm_mode = True
