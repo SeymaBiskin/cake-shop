@@ -1,9 +1,9 @@
 from typing import List, Optional
 
 from fastapi import APIRouter, HTTPException
-from models import Cake
+from app.models import Cake
 
-from database import (
+from app.database import (
     fetch_one_cake,
     fetch_all_cakes,
     create_cake,

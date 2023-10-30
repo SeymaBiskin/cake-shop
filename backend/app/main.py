@@ -1,8 +1,7 @@
 from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from internal import admin
-from routers import cakes, root
+from app.routers import cakes, root
 
 app = FastAPI()
 
@@ -15,13 +14,6 @@ app.include_router(
 app.include_router(
     cakes.router,
     tags=["cake"],
-)
-
-app.include_router(
-    admin.router,
-    prefix="/admin",
-    tags=["admin"],
-    responses={418: {"description": "Admin page not available"}},
 )
 
 

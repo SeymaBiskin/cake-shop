@@ -1,11 +1,8 @@
 import motor.motor_asyncio
 from bson import ObjectId
 from decouple import config
-from fastapi import status
-from fastapi.encoders import jsonable_encoder
-from fastapi.responses import JSONResponse
 
-from models import Cake
+from app.models import Cake
 
 db_username = config("MONGO_USER")
 db_password = config("MONGO_PASSWORD")
