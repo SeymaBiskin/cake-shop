@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routers import cakes, root
@@ -18,14 +18,7 @@ app.include_router(
 
 
 origins = [
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:8000",
-    "http://web:8000",
-    "http://localhost",
-    "http://0.0.0.0",
-    "*"      
+    "*"
 ]
 
 app.add_middleware(
@@ -35,5 +28,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-

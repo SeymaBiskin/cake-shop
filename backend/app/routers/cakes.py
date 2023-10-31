@@ -1,7 +1,7 @@
-from typing import List, Optional
-
-from fastapi import APIRouter, HTTPException
-from app.models import Cake
+from fastapi import APIRouter, HTTPException, Body
+from fastapi.encoders import jsonable_encoder
+from bson import ObjectId
+from app.models import Cake, CakeCreate
 
 from app.database import (
     fetch_one_cake,
@@ -14,33 +14,39 @@ from app.database import (
 router = APIRouter()
 
 
-@router.get("/cake", summary= "Get cakes")
+@router.get("/cake", summary="Get cakes")
 async def get_cake():
     response = await fetch_all_cakes()
     return response
 
-@router.get("/cake{id}/", response_model=Cake, summary= "Get cake")
+
+@router.get("/cake{id}/", response_model=Cake, summary="Get cake")
 async def get_cake_by_id(id: str):
     response = await fetch_one_cake(id)
     if response:
         return response
     raise HTTPException(404, f"There is no cake with name {id}")
 
-@router.post("/cake", response_model=Cake, summary= "Add cake")
-async def post_cake(cake: Cake):
-    response  = await create_cake(cake.dict())
+
+@router.post("/cake", response_model=CakeCreate, summary="Add cake")
+async def post_cake(cake: CakeCreate = Body(...)):
+    cake_dict = jsonable_encoder(cake)
+    cake_dict["_id"] = (ObjectId())
+    response = await create_cake(cake_dict)
     if response:
         return response
     raise HTTPException(400, "Wrong data entered/ Bad request")
 
-@router.put("/cake{id}/", response_model=Cake, summary= "Update cake")
-async def update_cake_by_id(id:str, name: str, comment: str, image_url: str, yum_factor: int):
+
+@router.put("/cake{id}/", response_model=Cake, summary="Update cake")
+async def update_cake_by_id(id: str, name: str, comment: str, image_url: str, yum_factor: int):
     response = await update_cake(id, name, comment, image_url, yum_factor)
     if response:
         return response
     raise HTTPException(404, f"There is no cake with name {name}")
 
-@router.delete("/cake{id}", summary= "Delete cake")
+
+@router.delete("/cake{id}", summary="Delete cake")
 async def delete_cake_by_id(id: str):
     response = await remove_cake(id)
     if response:
