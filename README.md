@@ -1,7 +1,7 @@
 # Cake-Shop
 
 ## Description
-This project is a web application with a FastAPI backend running in Docker containers managed by Docker Compose. It provides a scalable and portable way to run your FastAPI application and its dependencies.
+This project is a web application for a cake shop with a FastAPI backend running in Docker containers managed by Docker Compose. It provides a scalable and portable way to run your cake shop application and its dependencies.
 
 ## Prerequisites
 Before getting started, make sure you have the following installed on your system:
@@ -13,38 +13,35 @@ Before getting started, make sure you have the following installed on your syste
    ```shell
    git clone https://github.com/SeymaBiskin/cake-shop.git
 2. Navigate to the project directory:
+   ```shell
    cd cake-shop
 3. Build and start the Docker containers with Docker Compose:
+   ```shell
    docker-compose up -d
-4. The FastAPI application should now be running. You can access it in your web browser at http://localhost:8000/docs
+4. The FastAPI application should now be running. You can access it in your web browser at
+   ```shell
+   http://localhost:8000/docs
 
 ## Project Structure
-project-directory/
+```plaintext
+cake-shop/
 │
 ├── backend/
 │   ├── app/
-│   │   ├── main.py        # FastAPI application code
-│   │   ├── models.py      # Data models
-│   │   ├── routers/        # API route handlers
-│   │   ├── internal/       # Business logic and services
-│   │   ├── database.py
+│   │   ├── main.py           # FastAPI application code
+│   │   ├── models.py         # Data models
+│   │   ├── routers/          # API route handlers
+│   │   ├── database.py       # Business logic and services
+│   │   
 │   │   
 │   │
-│   ├── Dockerfile          # Dockerfile for the FastAPI application
-│   ├── requirements.txt    # Python dependencies
+│   ├── Dockerfile            # Dockerfile for the FastAPI application
+│   ├── requirements.txt      # Python dependencies
 │   
 │
-├── docker-compose.yml      # Docker Compose configuration
+├── docker-compose.yml        # Docker Compose configuration
 │
-├── .env                    # Example environment variables file
-├── README.md               # This README file
-├── ...
-
-cake-shop/
-│
-├── app/
-│   ├── main.py          # FastAPI application code
-│   ├── models.py        # Data models (if using a database)
-│  
+├── .env                      # File for environment variables
+├── README.md                 # README file
 
 
