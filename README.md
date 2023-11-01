@@ -1,5 +1,12 @@
 # Cake-Shop
 
+
+## Table of Contents
+- [Description](#description)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+
 ## Description
 This project is a web application for a cake shop with a FastAPI backend running in Docker containers managed by Docker Compose. It provides a scalable and portable way to run your cake shop application and its dependencies.
 

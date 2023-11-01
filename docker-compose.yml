@@ -10,10 +10,10 @@ services:
       - CONN_STR=mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@cakeshop.9kc7omy.mongodb.net/?retryWrites=true&w=majority  
     ports:
       - 8000:8000
+    volumes:
+      - ./backend/app:/backend/app
     depends_on:
       - mongodb
-    # networks:
-    #   - backend-network
 
   mongodb:
     image: mongo
@@ -26,15 +26,4 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - type: bind
-        source: ./data
-        target: /data/db
-    # networks:
-    #   - backend-network
-
-# networks:
-#   backend-network:
-
-
-
-
+      - ./data:/data/db
