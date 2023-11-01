@@ -1,15 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import cakes, root
+from app.routers import cakes
 
 app = FastAPI()
 
-
-app.include_router(
-    root.router,
-    tags=["root"],
-)
 
 app.include_router(
     cakes.router,
@@ -20,6 +15,7 @@ app.include_router(
 origins = [
     "*"
 ]
+
 
 app.add_middleware(
     CORSMiddleware,
