@@ -44,6 +44,7 @@ cake-shop/
 │   │   ├── models.py         # Data models
 │   │   ├── routers/          # API route handlers
 │   │   ├── database.py       # Business logic and services
+│   │   ├── util/             # Utilities
 │   │   
 │   │   
 │   │
