@@ -42,6 +42,14 @@ async def update_cake(id, name, comment, image_url, yum_factor):
                                             "yumFactor": yum_factor
                                         }})
     document = await collection.find_one({"_id": ObjectId(id)})
+    if document:
+        await collection.update_many({"_id": ObjectId(id)},
+                                    {"$set": {
+                                        "name": name,
+                                        "comment": comment,
+                                        "imageUrl": image_url,
+                                        "yumFactor": yum_factor
+                                    }})
     return document
 
 

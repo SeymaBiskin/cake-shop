@@ -18,9 +18,14 @@ Before getting started, make sure you have the following installed on your syste
 3. Build and start the Docker containers with Docker Compose:
    ```shell
    docker-compose up -d
-4. The FastAPI application should now be running. You can access it in your web browser at
+4. The FastAPI application should now be running. You can access it in the documentation as SwaggerUI at
    ```shell
    http://localhost:8000/docs
+
+5. You can also access it in the documentation as ReDoc at
+   ```shell
+   http://localhost:8000/redoc
+
 
 ## Project Structure
 ```plaintext
